@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { inputText: "teste ",age:12, remarque:"" };
+  }
+ evaluer() {
+  if(this.state.age >18)
+  {
+    alert("majeur");
+  }
+  else
+  alert("mineur");
+  
+}
+  render() {
+    return (
+      <div style={{ marginTop: "10%", textAlign: "center" }}>
+        <h1>{this.state.inputText}</h1>
+        <p> age: {this.state.age} </p>
+        <input
+          value={this.state.inputText}
+          onChange={(e) => this.setState({ inputText: e.target.value })}
+        /><br/>
+            <input type="number"
+          value={this.state.age}
+          onChange={(e) => this.setState({ age: e.target.value })}
+        />
+        <button onClick={this.evaluer()}>Click me</button>
+      </div>
+    );
+  }
 }
 
 export default App;
