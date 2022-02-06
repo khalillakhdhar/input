@@ -1,23 +1,25 @@
 import React from "react";
 
 class App extends React.Component {
+   x=22;
   constructor(props) {
     super(props);
-    this.state = { inputText: "teste ",age:12, remarque:"" };
+    
+    this.state = { inputText: "teste",age:12, remarque:"" };
   }
- evaluer() {
+   evaluer() {
   if(this.state.age >18)
   {
-    alert("majeur");
+    this.state.remarque="majeur";
   }
   else
-  alert("mineur");
-  
+  this.state.remarque="mineur";
 }
+
   render() {
     return (
       <div style={{ marginTop: "10%", textAlign: "center" }}>
-        <h1>{this.state.inputText}</h1>
+        <h1>{this.state.inputText} {this.x}</h1>
         <p> age: {this.state.age} </p>
         <input
           value={this.state.inputText}
@@ -28,6 +30,7 @@ class App extends React.Component {
           onChange={(e) => this.setState({ age: e.target.value })}
         />
         <button onClick={this.evaluer()}>Click me</button>
+        <br/> {this.state.remarque}
       </div>
     );
   }
